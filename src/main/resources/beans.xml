@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean name="course" class="co.springlearning.dependencyInjection.Course">
+        <property name="courseId" value="1"></property>
+        <property name="courseName" value="Java"></property>
+    </bean>
+    <bean name="student" class="co.springlearning.dependencyInjection.Student">
+        <constructor-arg name="studentId" value="20"></constructor-arg>
+        <constructor-arg name="name" value="Kiran"></constructor-arg>
+        <constructor-arg name="course" ref="course"></constructor-arg>
+        <property name="hobbies">
+            <list>
+                <value>Reading</value>
+                <value>watching TV</value>
+                <value>writing</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
