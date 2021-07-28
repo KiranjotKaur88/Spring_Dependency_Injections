@@ -5,20 +5,37 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean name="course" class="co.springlearning.dependencyInjection.Course">
+
+
+
+
+<bean name="course" class="co.springlearning.dependencyInjection.Course">
+
+
+
         <property name="courseId" value="1"></property>
         <property name="courseName" value="Java"></property>
     </bean>
-    <bean name="student" class="co.springlearning.dependencyInjection.Student">
-        <constructor-arg name="studentId" value="20"></constructor-arg>
+
+    <bean name="format" factory-method="getInstance" class="java.text.NumberFormat"></bean>
+    <bean init-method="init" destroy-method="release" name="student" class="co.springlearning.dependencyInjection.Student">
+        <constructor-arg name="studentId" value="2000000000"></constructor-arg>
         <constructor-arg name="name" value="Kiran"></constructor-arg>
         <constructor-arg name="course" ref="course"></constructor-arg>
+        <constructor-arg name="format" ref="format"></constructor-arg>
         <property name="hobbies">
             <list>
                 <value>Reading</value>
                 <value>watching TV</value>
                 <value>writing</value>
             </list>
+        </property>
+        <property name="skilMap">
+            <map>
+                <entry key="c++" value="Beginner"></entry>
+                <entry key="Java" value="Advance"></entry>
+                <entry key="Spring" value="Intermediate"></entry>
+            </map>
         </property>
     </bean>
 
